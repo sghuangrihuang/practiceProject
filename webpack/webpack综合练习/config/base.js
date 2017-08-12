@@ -9,6 +9,18 @@ module.exports = {
   // process.cwd()表示返回运行当前脚本的工作目录的路径
   // entry: process.cwd() + '/src/index.js',
   entry: resolve('src/index.js'),
+  // 配置模块如何解析
+  resolve: {
+    // 自动解析确定的扩展 默认值为：.js .json
+    // 能够使用户在引入模块时不带扩展 import config from './config' // <==> config/index.js
+    extensions: [".js", ".json"],
+    alias: {
+      Utilities: path.resolve(__dirname, 'src/utilities/'),
+      Templates: path.resolve(__dirname, 'src/templates/')
+      // import Utility from '../../utilities/utility'
+      // import Utility from 'Utilities/utility'
+    }
+  },
   module: {
     rules: [
       {

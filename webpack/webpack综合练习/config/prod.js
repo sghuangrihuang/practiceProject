@@ -66,9 +66,11 @@ module.exports = webpackMerge(base, {
     extractCSS,
     extractStylus,
     new UglifyJSPlugin({
+      // 额外的压缩选项
       compress: {
         warnings: false,
       },
+      // 额外的输出选项 （默认值为最佳压缩优化）
       output: {
         comments: false
       }
