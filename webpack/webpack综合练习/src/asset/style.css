@@ -1,6 +1,3 @@
-.header{
-  color: #666;
-  box-sizing: border-box;
-  position: relative;
-  transition: all .5s linear;
+.header {
+  font-size: 40px;
 }

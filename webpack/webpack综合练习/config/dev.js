@@ -22,6 +22,10 @@ module.exports = webpackMerge(base, {
   module: {
     rules: [
       {
+        test: /\.html$/,
+        use: ['raw-loader']
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },

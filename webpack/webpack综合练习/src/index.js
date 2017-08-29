@@ -1,3 +1,4 @@
+require('./index.html')
 import './asset/style.css'
 import './asset/main.styl'
 import url from './asset/webpack.png'

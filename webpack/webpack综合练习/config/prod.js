@@ -69,6 +69,8 @@ module.exports = webpackMerge(base, {
       // 额外的压缩选项
       compress: {
         warnings: false,
+        drop_console: true,
+        pure_funcs: ['console.log']
       },
       // 额外的输出选项 （默认值为最佳压缩优化）
       output: {

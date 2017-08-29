@@ -28,13 +28,13 @@ module.exports = {
         exclude: [/node_modules/],
         loader: 'babel-loader'
       },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
-        options: {
-          minimize: true
-        }
-      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html-loader',
+      //   options: {
+      //     minimize: true
+      //   }
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
