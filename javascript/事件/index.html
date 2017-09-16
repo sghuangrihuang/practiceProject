@@ -12,34 +12,59 @@
 
     var EventUtil = {
 
-      addHandler: function(target, type, handler) {
-        if (target.addEventListener) {
+      addHandler: function(event, type, handler) {
+        if (event.addEventListener) {
           // Dom2级事件处理
           console.log(2)
-          target.addEventListener(type, handler, false);
-        } else if (target.attachEvent) {
+          event.addEventListener(type, handler, false);
+        } else if (event.attachEvent) {
           // IE8及其以下版本只支持冒泡事件
           console.log(1)
-          target.attachEvent("on" + type, function(event){
+          event.attachEvent("on" + type, function(event){
             // this指向window,使用.call方法改变this指向
             // 同个事件以入栈形式添加出栈顺序触发
-            return handler.call(target, event)
+            return handler.call(event, event)
           })
         } else {
           // Dom0级事件处理
           console.log(0)
-          target["on" + type] = handler;
+          event["on" + type] = handler;
         }
       },
-      removeHandler: function(target, type, handler) {
-        if (target.removeEventListener) {
-          target.removeEventListener(type, handler, false);
-        } else if (target.detachEvent) {
-          target.detachEvent("on" + type, function(event){
-            return handler.call(target, event)
+
+      getEvent: function(event) {
+        return event ? event : window.event;
+      },
+
+      getTarget: function(event) {
+        return event.target || window.event.target;
+      },
+      
+      preventDefault: function(event) {
+        if (event.preventDefault) {
+          event.preventDefault();
+        } else {
+          event.returnValue = false;
+        }
+      },
+
+      removeHandler: function(event, type, handler) {
+        if (event.removeEventListener) {
+          event.removeEventListener(type, handler, false);
+        } else if (event.detachEvent) {
+          event.detachEvent("on" + type, function(event){
+            return handler.call(event, event)
           });
         } else {
-          target["on" + type] = null;
+          event["on" + type] = null;
+        }
+      },
+
+      stopPropagation: function(event) {
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        } else {
+          event.cancelBubble = true;
         }
       }
 
