@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件处理</title>
+</head>
+<body>
+  <button id="btn">测试按钮</button>
+  <script>
+
+    var EventUtil = {
+
+      addHandler: function(target, type, handler) {
+        if (target.addEventListener) {
+          // Dom2级事件处理
+          console.log(2)
+          target.addEventListener(type, handler, false);
+        } else if (target.attachEvent) {
+          // IE8及其以下版本只支持冒泡事件
+          console.log(1)
+          target.attachEvent("on" + type, function(event){
+            // this指向window,使用.call方法改变this指向
+            // 同个事件以入栈形式添加出栈顺序触发
+            return handler.call(target, event)
+          })
+        } else {
+          // Dom0级事件处理
+          console.log(0)
+          target["on" + type] = handler;
+        }
+      },
+      removeHandler: function(target, type, handler) {
+        if (target.removeEventListener) {
+          target.removeEventListener(type, handler, false);
+        } else if (target.detachEvent) {
+          target.detachEvent("on" + type, function(event){
+            return handler.call(target, event)
+          });
+        } else {
+          target["on" + type] = null;
+        }
+      }
+
+    }
+    var btn  = document.getElementById('btn');
+    var func = function() {
+      console.dir(this);
+      console.log(1);
+    }
+    var func1 = function() {
+      console.dir(this);
+      console.log(2);
+    }
+    EventUtil.addHandler(btn, 'click', func);
+    EventUtil.addHandler(btn, 'click', func1);
+    // EventUtil.removeHandler(btn, 'click', func);
+  </script>
+</body>
+</html>
