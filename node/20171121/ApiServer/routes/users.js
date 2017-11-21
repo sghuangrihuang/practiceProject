@@ -13,11 +13,11 @@ router.get('/getUserInfo', function(req, res, next) {
   var params = URL.parse(req.url, true).query;
 
   if (params.id == 1) {
-    user.name = 'user';
+    user.role_id = 'user';
     user.age = 1;
     user.city = '广州';
   } else {
-    user.name = 'admin';
+    user.role_id = 'admin';
     user.age = 10;
     user.city = '上海';
   }
