@@ -1,0 +1,112 @@
+body, html
+  line-height: 1
+  font-weight: 200
+  font-family: 'PingFang SC','STHeitiSC-Light','Helvetica-Light',arial,sans-serif
+// 安卓1px
+bt-1px($color)
+  position relative
+  &:before
+    display block
+    position absolute
+    left 0
+    top 0
+    width 100%
+    border-top 1px solid $color
+    content ' '
+
+bl-1px($color)
+  position relative
+  &:after
+    display block
+    position absolute
+    left 0
+    top 0
+    height 100%
+    border-left 1px solid $color
+    content ' '
+
+br-1px($color)
+  position relative
+  &:after
+    display block
+    position absolute
+    right 0
+    top 0
+    height 100%
+    border-right 1px solid $color
+    content ' '
+
+bb-1px($color)
+  position: relative
+  &:after
+    position absolute
+    display block
+    left 0
+    bottom 0
+    width 100%
+    border-bottom 1px solid $color
+    content ' '
+
+bt-2px($color)
+	position relative
+  &:before
+    display block
+    position absolute
+    left 0
+    top 0
+    width 100%
+    border-top 2px solid $color
+    content ' '
+
+bb-2px($color)
+	position relative
+  &:after
+  	display block
+    position absolute
+    left 0
+    bottom 0
+    width 100%
+    border-bottom 2px solid $color
+    content ' '
+
+  //  浏览器高清适配 字体  默认为字体大小
+property-dpr($px-values, $property = 'font-size')
+  {$property} ($px-values / 2)
+
+  [data-dpr="2"] & 
+    {$property} $px-values
+
+  [data-dpr="2.5"] & 
+    {$property} ($px-values * 2.5 / 2)
+
+  [data-dpr="2.625"] & 
+    {$property} ($px-values * 2.625 / 2)
+
+  [data-dpr="2.75"] & 
+    {$property} ($px-values * 2.75 / 2)
+
+  [data-dpr="3"] & 
+    {$property} ($px-values / 2 * 3)
+
+  [data-dpr="3.5"] & 
+    {$property} ($px-values / 2 * 3.5)
+
+  [data-dpr="4"] & 
+    {$property} ($px-values * 2)
+
+// px 转 rem  默认为750设计稿
+px2rem($px-value, $px-psd = 750)
+  ($px-value / $px-psd * 10) rem
+
+// 文本缩略 默认为1
+ellipsis($num = 1) 
+  display -webkit-box
+  -webkit-box-orient vertical
+  -webkit-line-clamp $num
+  overflow hidden
+
+// 默认2倍图  
+bg-images($url)
+	background-image: url($url+'@2x.png')
+	@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) 
+		background-image: url($url+'@3x.png')
