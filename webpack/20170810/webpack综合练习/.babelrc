@@ -1,7 +1,0 @@
-// Babel的配置文件是.babelrc，存放在项目的根目录下。该文件用来设置转码规则和插件
-{
-  // presets字段设定转码规则，官方提供以下的规则集
-  "presets":["latest", "stage-2"],
-  // presets，也就是一堆plugins的预设，起到方便的作用。如果你不采用presets，完全可以单独引入某个功能
-  "plugins":["transform-runtime"]
-}
