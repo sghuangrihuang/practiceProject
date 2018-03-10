@@ -1,3 +1,8 @@
+## weex版本
+
+由于weex最近都在全面更新中，有些例子，或者有些demo不符合现在的项目。特此在这发表该项目的weex版本
+
+![](https://raw.githubusercontent.com/sghuangrihuang/staticRepository/master/20180310/1.png)
 ## Commands
 
 ### npm start
