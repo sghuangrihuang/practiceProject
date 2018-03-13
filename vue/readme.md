@@ -24,3 +24,7 @@
 项目情况
 
 - [x] 列表页面基本完成
+
+## Vue problem solution
+
+Vue 解决方案总结
