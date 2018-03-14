@@ -208,3 +208,28 @@ github：[https://github.com/chimurai/http-proxy-middleware](https://github.com/
   build.assetsPublicPath: './'
   
 ```
+
+##  自定义路径别名
+
+在 vue-cli 生成的模板中在导入组件时使用了这样的语法：路径别名。
+
+``` javascript
+  import Index from '@/components/Index'
+```
+  
+　我们也可以在基础配置文件中添加自己的路径别名，比如下面这个就把 ~ 设置为路径 src/components 的别名：
+
+``` javascript
+  // build/webpack.base.config.js
+  resolve: {
+      extensions: ['.js', '.vue', '.json'],
+      alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
+      '~': resolve('src/components')
+    }
+  }
+
+  // 引用
+  import YourComponent from '~/YourComponent'
+```
