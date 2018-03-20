@@ -1,6 +1,8 @@
 var express = require('express');
 var URL = require('url');
 var User = require('./user');
+var formidable = require('formidable');
+
 var router = express.Router();
 
 /* GET users listing. */
@@ -29,6 +31,32 @@ router.get('/getUserInfo', function(req, res, next) {
   res.send(JSON.stringify(response));
 
 })
+
+router.post('/editUsersAvatar', function(req, res, next) {
+  let form = new formidable.IncomingForm()
+
+  form.parse(req, function(err, fields, files) {
+    if (err) {
+      return res.json({
+        "state": 500,
+        "message": "服务器错误"
+      })
+    }
+
+    // 
+    // fs替换图片
+    // 更新db数据库
+    // 
+
+    let response = {
+      "state": 200,
+      "message": "服务器请求成功",
+      "data": files
+    }
+    return res.json(response);
+    
+  });
+});
 
 
 module.exports = router;
