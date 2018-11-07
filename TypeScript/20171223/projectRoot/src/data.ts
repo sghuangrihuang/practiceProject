@@ -11,17 +11,16 @@ let numList: number[] = [1, 2, 3, 4];
 
 let numList2: Array<number> = [1, 2, 3, 5];
 
-let list2d: Array<Array<number>> = [[1,2,3], [1,2,3]];
+let list2d: Array<Array<number>> = [[1, 2, 3], [1, 2, 3]];
 
 // 元组
 // 但是元素数据类型的类型和前几个元素的顺序都是有限制
 let x: [string, number] = ["hello", 10];
-x[3] = "1";
 
 // 枚举
 // 默认情况下，从0开始为元素编号。 你也可以手动的指定成员的数值
 // 1
-enum Color {Red = 1, Green, Blue}
+enum Color { Red = 1, Green, Blue }
 let c: Color = Color.Green;
 
 // any 任意类型
@@ -37,16 +36,16 @@ let n: null = null;
 
 // 函数
 // 必选参数
-function add(x: number, y:number): number {
+function add(x: number, y: number): number {
   return x + y;
 }
 // 可选参数
 function sayHello(firstName: string, mess?: string): void {
-  console.log("hello world");
+  console.log(`${firstName}：${mess}`);
 }
 
 class Animal {
-  name:string;
+  name: string;
   constructor(theName: string) { this.name = theName; }
   move(distanceInMeters: number = 0) {
     console.log(`${this.name} moved ${distanceInMeters}m.`);
@@ -69,7 +68,7 @@ function printLabel(LabelledObj: LabelledValue) {
   console.log(LabelledObj.label);
 }
 
-let myObj = {size: 10, label: "Size 10 Object"};
+let myObj = { size: 10, label: "Size 10 Object" };
 printLabel(myObj);
 
 // 实现接口类
@@ -85,4 +84,3 @@ class Clock implements ClockInterface {
   }
   constructor(h: number, m: number) { }
 }
-
