@@ -84,3 +84,17 @@ class Clock implements ClockInterface {
   }
   constructor(h: number, m: number) { }
 }
+
+// 泛型变量T
+function identity<T>(arg: T): T {
+  return arg
+}
+
+let output = identity<string>("myString");
+
+function loggingIdentity<T>(arg: T[]): T[] {
+  console.log(arg.length)
+  return arg;
+}
+
+let myIdenTity: <T>(arg: T) => T = identity

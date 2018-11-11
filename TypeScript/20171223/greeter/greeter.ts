@@ -1,9 +1,11 @@
 // 申明class类
 class Student {
   fullName: string;
-  constructor(public firstName, public middleInitial, public lastName) {
-    this.fullName = firstName + " " + middleInitial + " " + lastName;
-    console.log(this);
+  constructor(public firstName, public middleInitial, public lastName, public age) {
+    this.fullName = `${firstName} ${middleInitial} ${lastName}`
+  }
+  sayHello () {
+    console.log(this.fullName);
   }
 }
 
@@ -11,6 +13,7 @@ class Student {
 interface Person {
   firstName: string;
   lastName: string;
+  age: Number;
 }
 
 // 变量名: 数据类型
@@ -18,6 +21,5 @@ function greeter(person: Person) {
   return "Hello, " + person.firstName + " " + person.lastName;
 }
 
-let user = new Student("Jane", "M.", "User");
-
+let user = new Student("Jane", "M.", "User", 18);
 document.body.innerHTML = greeter(user);

@@ -71,3 +71,12 @@ var Clock = (function () {
     };
     return Clock;
 }());
+function identity(arg) {
+    return arg;
+}
+var output = identity("myString");
+function loggingIdentity(arg) {
+    console.log(arg.length);
+    return arg;
+}
+var myIdenTity = identity;
